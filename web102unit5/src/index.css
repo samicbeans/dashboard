@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #f0ddb3;
+  background-color: rgb(121, 95, 70);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +15,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #378b21;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #f59920;
 }
 
 body {
@@ -42,27 +42,54 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color:#f0ddb3;
+  background-color: #4b3a2c;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #9ae456;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.whole-page{
+  padding: 50;
+  text-align: center;
+  background: rgb(121, 95, 70);
+  color:#f0ddb3;
+}
+.filter-search label{
+  padding-left: 50px;
+}
+.summary-stats {
+  display: flex; /* Set display to flex */
+  justify-content: space-around; /* Adjust spacing between items */
+
+}
+.summary-stats th{
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 5%;
+  margin-right: 15%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 8px;
+  background-color: #4b3a2c;
+}
+.categories th{
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-left: 5%;
+  margin-right: 15%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 8px;
+  background-color: #3c412c;
+}
+.main-board{
+  background-color: #d5da8f;
+  color: #4b3a2c;
 }
