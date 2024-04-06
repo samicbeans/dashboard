@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { useState, useEffect } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Link } from "react-router-dom";
 
 const CLIENTID = import.meta.env.VITE_APP_CLIENT_ID;
 const APIKEY = import.meta.env.VITE_APP_API_KEY;
@@ -25,6 +27,7 @@ function App() {
         &taxonomies.name=${filters.type}&per_page=50`;}
           const response = await fetch(API_URL);
           const json = await response.json();
+          console.log(json);
           setList(json.events);
       };
 
@@ -82,6 +85,24 @@ function App() {
     // Calculate average highest ticket price
     const averageTicketPrice = filteredList.length > 0 ? totalTicketPrice / eventswithprices : 0;
   
+      // Aggregate data for the line chart: average ticket price per date
+  const aggregatedData = filteredList.reduce((acc, event) => {
+    const date = event.datetime_local.split('T')[0]; // Extract date from datetime_local
+    const price = event.stats.highest_price || 0; // Use highest_price, fallback to 0 if null
+    if (!acc[date]) {
+      acc[date] = { date, totalPrice: price, count: 1 };
+    } else {
+      acc[date].totalPrice += price;
+      acc[date].count++;
+    }
+    return acc;
+  }, {});
+
+  const chartData = Object.values(aggregatedData).map(item => ({
+    date: item.date,
+    averagePrice: item.totalPrice / item.count
+  }));
+
 
   return (
     <div className='whole-page'>
@@ -125,12 +146,26 @@ function App() {
       <table className="summary-stats"> 
         <thead>
           <tr>
+            <h3>Summary Stats Overall</h3>
             <th>Total Events: {filteredList.length}</th>
             <th>Most Common Event Type: {mostCommonEventType}</th>
             <th>Average Highest Ticket Price: ${averageTicketPrice.toFixed(2)}</th>
           </tr>
         </thead>
       </table>
+      <div className='chartdata'>
+        <h4 className='chart-title'>Average Ticket Price by Date</h4>
+        {chartData.length > 0 && (
+          <LineChart width={800} height={400} data={chartData}>
+            <CartesianGrid strokeDasharray='3 3' fill='black'/>
+            <XAxis dataKey='date' stroke='white'/>
+            <YAxis stroke='white'/>
+            <Tooltip />
+            <Legend />
+            <Line type='monotone' dataKey='averagePrice' stroke='#55AAFF' />
+          </LineChart>
+        )}
+      </div>
       <table>
         <thead>
           <tr className='categories'>
@@ -144,8 +179,14 @@ function App() {
         </thead>
         <tbody className='main-board'>
           {filteredList.map(event => (
-            <tr key={event.id}>
-              <td>{event.title}</td>
+              <tr key={event.id}>
+              <Link
+                style={{ color: "purple" }}
+                to={`/eventDetails/${event.id}`}
+                key={event.id}
+                >
+                <td>{event.title}</td>
+              </Link>
               <td>{event.stats.highest_price != null ? "$" + event.stats.highest_price : 'N/A'}</td>
               <td><a href={event.url} target="_blank" rel="noopener noreferrer">{event.url}</a></td>
               <td>{event.taxonomies.length > 0 ? event.taxonomies[0].name : 'N/A'}</td>
@@ -156,6 +197,7 @@ function App() {
         </tbody>
       </table>
     </div>
+    
   );
 }
 

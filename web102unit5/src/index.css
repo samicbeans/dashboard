@@ -93,3 +93,8 @@ button:focus-visible {
   background-color: #d5da8f;
   color: #4b3a2c;
 }
+.chart-title{
+display:flex;
+justify-content: left;
+margin-left: 20%;
+}
