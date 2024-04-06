@@ -1,27 +1,23 @@
-# Web Development Project 5 - _My Events Dashboard_
+# Web Development Project 6 - _My Events Dashboard Part 2_
 
 Submitted by: Sami Chen
 
-This web app: **shows a dashboard that provides an at-a-glance summary of information gathered from a public API called Seatgeek, as well as some information of the entries that were gathered. Users can specify the data fetched from the API with the search feature, and filter out entries based on name, event type, event's highest ticket price, and venue's state.**
+This web app: **shows a dashboard that provides an at-a-glance summary of information gathered from a public API called Seatgeek, as well as some information of the entries that were gathered. Users can specify the data fetched from the API with the search feature, and filter out entries based on name, event type, event's highest ticket price, and venue's state. In addition it provides a chart of the average ticket cost for the dataset of events based on the date of the event. Users can click on a event's title to see a webpage that has more detailed information about that event.**
 
-Time spent: **96** hours spent in total
+Time spent: **72** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The list displays a list of data fetched using an API call**
-- [x] **Data uses the useEffect React hook and async/await syntax**
-- [x] **The app dashboard includes at least three summary statistics about the data such as**
-  - [x] _The total number of fetched events, the fetched events' average highest price for tickets (total ticket prices/# events that had ticket prices), and fetched entries' most common event type_
-- [x] **A search bar allows the user to search for an item in the fetched data**
-- [x] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [x] **The app includes at least one unique chart developed using the fetched data that tell an interesting story**
+- [x] **Clicking on an item in the list view displays more details about it**
+- [x] **Clicking on an item has a direct, unique link to that item's detail view page**
 
 The following **optional** features are implemented:
 
-- [x] Multiple filters can be applied simultaneously
-- [ ] Filters use different input types such as a text input, a selection, or a slider
-- [ ] The user can enter specific bounds for filter values
+- [ ] The site's customized dashboard contains more content that explains what is interesting about the data
+- [ ] The site allows users to toggle between different data visualizations
 
 The following **additional** features are implemented:
 
@@ -29,13 +25,13 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories: https://imgur.com/a/RM86yz1
+Here's a walkthrough of implemented user stories: https://imgur.com/a/PLsfyFv
 
-<img src='https://imgur.com/a/RM86yz1' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/a/PLsfyFv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
 
-GIF created with Screen2Gif
+GIF created with ...
 
 <!-- Recommended tools:
 [Kap](https://getkap.co/) for macOS
@@ -44,7 +40,7 @@ GIF created with Screen2Gif
 
 ## Notes
 
-This was by far the hardest project so far in the course. A lot of the reccomended APIs for this project were giving me issues so a lot of the time I had to start over and choose a new API because the API would not cooperate, leading me to take up lot of time to redo major aspects of the project to learn new documentation.
+My main troubles were with learning the documentation for Recharts and how to use it to create a chart, and figuring out what kind of data I want to display for that chart.
 
 ## License
 
